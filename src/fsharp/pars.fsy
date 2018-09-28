@@ -4322,6 +4322,8 @@ typEOF:
 
 
 tupleType:
+  | appType STAR STAR INT32
+	{ SynType.Tuple((false,$1) |> List.replicate (fst $4), lhs parseState) }
   | appType STAR tupleOrQuotTypeElements 
     { SynType.Tuple((false,$1) :: $3,lhs parseState) }
 
