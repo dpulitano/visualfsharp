@@ -458,6 +458,8 @@ and
     | StaticConstantExpr of expr:SynExpr * range:range
     /// F# syntax : ident=1 etc., used in static parameters to type providers
     | StaticConstantNamed of expr:SynType * SynType * range:range
+    /// TODO comment
+    | Nat of int * range:range
     /// Get the syntactic range of source code covered by this construct.
     member x.Range =
         match x with
@@ -477,8 +479,7 @@ and
         | SynType.MeasureDivide (range=m)
         | SynType.MeasurePower (range=m) -> m
         | SynType.LongIdent(lidwd) -> lidwd.Range
-
-
+        | SynType.Nat (range=m) -> m
 
 and
     [<NoEquality; NoComparison;RequireQualifiedAccess>]

@@ -4680,6 +4680,8 @@ and TcTypeOrMeasure optKind cenv newOk checkCxs occ env (tpenv:SyntacticUnscoped
         errorR(Error(FSComp.SR.tcIllegalSyntaxInTypeExpression(), m))
         NewErrorType (), tpenv
 
+    | SynType.Nat(i,r) -> failwithf "in the du %A %A" i r //NewErrorType (), tpenv
+
 and TcType cenv newOk checkCxs occ env (tpenv:SyntacticUnscopedTyparEnv) ty = 
     TcTypeOrMeasure (Some TyparKind.Type) cenv newOk checkCxs occ env tpenv ty
 

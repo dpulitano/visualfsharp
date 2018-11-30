@@ -4519,7 +4519,9 @@ atomType:
       SynType.Anon (lhs parseState) }
 
   | rawConstant 
-     { SynType.StaticConstant($1, rhs parseState 1) }
+     { match $1 with
+        | SynConst.Int32 i -> SynType.Nat(i, rhs parseState 1)
+        | _ -> SynType.StaticConstant($1, rhs parseState 1) }
 
   | NULL
      { let m = rhs parseState 1
